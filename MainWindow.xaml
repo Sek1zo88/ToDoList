@@ -4,36 +4,40 @@
         Title="Todo List" Height="600" Width="900" WindowStartupLocation="CenterScreen">
     <Grid Margin="10">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="320"/>
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <StackPanel Grid.Column="0" Margin="0,0,10,0">
-            <TextBlock Text="Название:" Margin="0,5"/>
-            <TextBox x:Name="TxtTitle" Padding="5" Margin="0,0,0,10"/>
+        <!-- ЛЕВАЯ ПАНЕЛЬ: ФОРМА (теперь с прокруткой) -->
+        <ScrollViewer Grid.Column="0" VerticalScrollBarVisibility="Auto" Margin="0,0,15,0">
+            <StackPanel>
+                <TextBlock Text="Название:" Margin="0,5"/>
+                <TextBox x:Name="TxtTitle" Padding="5" Margin="0,0,0,10"/>
 
-            <TextBlock Text="Описание:" Margin="0,5"/>
-            <TextBox x:Name="TxtDescription" Padding="5" Height="60" TextWrapping="Wrap" Margin="0,0,0,10"/>
+                <TextBlock Text="Описание:" Margin="0,5"/>
+                <TextBox x:Name="TxtDescription" Padding="5" Height="60" TextWrapping="Wrap" Margin="0,0,0,10"/>
 
-            <TextBlock Text="Срок выполнения:" Margin="0,5"/>
-            <DatePicker x:Name="DpDueDate" Margin="0,0,0,10"/>
+                <TextBlock Text="Срок выполнения:" Margin="0,5"/>
+                <DatePicker x:Name="DpDueDate" Margin="0,0,0,10"/>
 
-            <TextBlock Text="Приоритет:" Margin="0,5"/>
-            <ComboBox x:Name="CmbPriority" Margin="0,0,0,10"/>
+                <TextBlock Text="Приоритет:" Margin="0,5"/>
+                <ComboBox x:Name="CmbPriority" Margin="0,0,0,10"/>
 
-            <TextBlock Text="Статус:" Margin="0,5"/>
-            <ComboBox x:Name="CmbStatus" Margin="0,0,0,15"/>
+                <TextBlock Text="Статус:" Margin="0,5"/>
+                <ComboBox x:Name="CmbStatus" Margin="0,0,0,15"/>
 
-            <Button Content="Добавить задачу" Click="BtnAdd_Click" Padding="10" Margin="0,5"/>
-            <Button Content="Обновить выбранную" Click="BtnUpdate_Click" Padding="10" Margin="0,5"/>
-            <Button Content="Удалить выбранную" Click="BtnDelete_Click" Padding="10" Margin="0,5" Background="#FFC0C0"/>
+                <Button Content="Добавить задачу" Click="BtnAdd_Click" Padding="10" Margin="0,5"/>
+                <Button Content="Обновить выбранную" Click="BtnUpdate_Click" Padding="10" Margin="0,5"/>
+                <Button Content="Удалить выбранную" Click="BtnDelete_Click" Padding="10" Margin="0,5" Background="#FFC0C0"/>
 
-            <Separator Margin="0,15"/>
+                <Separator Margin="0,15"/>
 
-            <Button Content="Сохранить в JSON" Click="BtnSave_Click" Padding="10" Margin="0,5" Background="#C0E0C0"/>
-            <Button Content="Загрузить из JSON" Click="BtnLoad_Click" Padding="10" Margin="0,5" Background="#C0D0E0"/>
-        </StackPanel>
+                <Button Content="Сохранить в JSON" Click="BtnSave_Click" Padding="10" Margin="0,5" Background="#C0E0C0"/>
+                <Button Content="Загрузить из JSON" Click="BtnLoad_Click" Padding="10" Margin="0,5" Background="#C0D0E0"/>
+            </StackPanel>
+        </ScrollViewer>
 
+        <!-- ПРАВАЯ ПАНЕЛЬ: ТАБЛИЦА -->
         <DataGrid Grid.Column="1" x:Name="GridTasks" AutoGenerateColumns="False" 
                   IsReadOnly="True" SelectionChanged="GridTasks_SelectionChanged">
             <DataGrid.Columns>
