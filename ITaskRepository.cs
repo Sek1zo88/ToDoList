@@ -1,6 +1,11 @@
-namespace ToDoList;
+using System.Collections.Generic;
 
-public class ITaskRepository
+namespace ToDoList
 {
-    
+    public interface ITaskRepository
+    {
+        List<TodoModel> LoadTasks();
+
+        void SaveTasks(List<TodoModel> tasks);
+    }
 }
